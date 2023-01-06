@@ -3,20 +3,16 @@ import Form from "react-bootstrap/Form";
 const Login = () => {
   return (
     <Form className="container">
-      <Form.Group className="mb-3 mt-3" controlId="formBasicEmail">
+      <Form.Group className="mb-3" controlId="Email">
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" placeholder="Enter email" required />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
       </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="Password">
         <Form.Label>Password</Form.Label>
         <Form.Control type="password" placeholder="Password" required />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
+        <Form.Text>
+          Don't have an account?<a href="/register">Sign-up!</a>
+        </Form.Text>
       </Form.Group>
       <Button variant="primary" type="submit">
         Login
