@@ -62,3 +62,28 @@ app.post("/createUser", async (req, res) => {
     }
   });
 });
+app.post("/login", (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  const sqlSearch = "Select * from users where email = ?";
+  const search_query = mysql.format(sqlSearch, [email]);
+  db.query(search_query, async (err, result) => {
+    if (err) throw err;
+    if (result.length == 0) {
+      console.log("--------> User does not exist");
+      res.sendStatus(404);
+    } else if (result[0].status == "blocked") {
+      console.log("--------> User blocked");
+      res.sendStatus(404);
+    } else {
+      const hashedPassword = result[0].password;
+      if (await bcrypt.compare(password, hashedPassword)) {
+        console.log("---------> Login Successful");
+        res.send(`${email} is logged in!`);
+      } else {
+        console.log("---------> Password Incorrect");
+        res.sendStatus(404);
+      }
+    }
+  });
+});
