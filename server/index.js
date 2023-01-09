@@ -87,3 +87,12 @@ app.post("/login", (req, res) => {
     }
   });
 });
+app.get("/reviews", (req, res) => {
+  db.query("SELECT * FROM reviews", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
