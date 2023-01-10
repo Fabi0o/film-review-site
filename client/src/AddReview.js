@@ -12,7 +12,7 @@ const AddReview = (props) => {
   const [reviewtitle, setReviewtitle] = useState("");
   const addReview = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:3001/addreview", {
+    Axios.post("https://film-review-site.onrender.com/addreview", {
       author: props.currentAccount,
       rating: rating,
       title: title,

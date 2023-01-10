@@ -10,7 +10,7 @@ const Register = () => {
   const [name, setName] = useState("");
   const registerUser = (e) => {
     e.preventDefault();
-    Axios.post("http://localhost:3001/createUser", {
+    Axios.post("https://film-review-site.onrender.com/createUser", {
       email: email,
       password: password,
       name: name,
