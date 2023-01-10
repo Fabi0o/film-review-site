@@ -1,7 +1,7 @@
 import Card from "react-bootstrap/Card";
 const ReviewPrev = (props) => {
   return (
-    <Card className="col-sm-8 m-auto">
+    <Card className="col-sm-8 m-auto mb-3">
       <Card.Body>
         <Card.Title>{props.review.reviewtitle}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">

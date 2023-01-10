@@ -96,3 +96,26 @@ app.get("/reviews", (req, res) => {
     }
   });
 });
+app.post("/addreview", (req, res) => {
+  const author = req.body.author;
+  const rating = req.body.rating;
+  const title = req.body.title;
+  const category = req.body.category;
+  const revbody = req.body.revbody;
+  const reviewtitle = req.body.reviewtitle;
+  const sqlInsert = "INSERT INTO reviews VALUES (null,?,?,?,?,?,?)";
+  const insert_query = mysql.format(sqlInsert, [
+    author,
+    rating,
+    title,
+    category,
+    revbody,
+    reviewtitle,
+  ]);
+  db.query(insert_query, (err, result) => {
+    if (err) throw err;
+    console.log("--------> Created new Review");
+    console.log(result.insertId);
+    res.sendStatus(201);
+  });
+});
