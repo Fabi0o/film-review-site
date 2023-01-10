@@ -13,8 +13,8 @@ const Login = (props) => {
       email: email,
       password: password,
     })
-      .then(() => {
-        props.setIsLoggedIn(true);
+      .then((res) => {
+        props.setCurrentAccount(res.data);
         navigate("/");
       })
       .catch((err) => {

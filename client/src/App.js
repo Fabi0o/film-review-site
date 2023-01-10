@@ -5,28 +5,38 @@ import "bootstrap/dist/js/bootstrap.bundle";
 import Login from "./Login";
 import Register from "./Register";
 import Home from "./Home";
+import AddReview from "./AddReview";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 function App() {
   const [reviews, setReviews] = useState([]);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentAccount, setCurrentAccount] = useState("");
   useEffect(() => {
-    setIsLoggedIn(JSON.parse(window.localStorage.getItem("isLoggedIn")));
+    setCurrentAccount(window.localStorage.getItem("currentAccount"));
   }, []);
 
   useEffect(() => {
-    window.localStorage.setItem("isLoggedIn", isLoggedIn);
-  }, [isLoggedIn]);
+    window.localStorage.setItem("currentAccount", currentAccount);
+  }, [currentAccount]);
   return (
     <Router>
-      <Nav isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      <Nav
+        currentAccount={currentAccount}
+        setCurrentAccount={setCurrentAccount}
+      />
       <Routes>
         <Route
           path="/login"
-          element={<Login setIsLoggedIn={setIsLoggedIn} />}
+          element={<Login setCurrentAccount={setCurrentAccount} />}
         />
         <Route path="/register" element={<Register />} />
+        <Route
+          path="/addreview"
+          element={
+            currentAccount && <AddReview currentAccount={currentAccount} />
+          }
+        />
         <Route
           path="/"
           element={<Home reviews={reviews} setReviews={setReviews} />}

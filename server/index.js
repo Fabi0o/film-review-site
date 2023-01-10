@@ -79,7 +79,7 @@ app.post("/login", (req, res) => {
       const hashedPassword = result[0].password;
       if (await bcrypt.compare(password, hashedPassword)) {
         console.log("---------> Login Successful");
-        res.send(`${email} is logged in!`);
+        res.send(result[0].username);
       } else {
         console.log("---------> Password Incorrect");
         res.sendStatus(404);

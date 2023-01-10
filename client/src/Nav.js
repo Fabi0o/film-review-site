@@ -3,17 +3,17 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 const Navi = (props) => {
   const logout = () => {
-    props.setIsLoggedIn(false);
+    props.setCurrentAccount("");
   };
   return (
     <Navbar bg="dark" variant="dark" className="mb-3">
       <Container>
         <Navbar.Brand href="/">ReviewSite</Navbar.Brand>
         <Nav>
-          {props.isLoggedIn && (
+          {props.currentAccount && (
             <Nav.Link href="/addreview">Add Review</Nav.Link>
           )}
-          {props.isLoggedIn ? (
+          {props.currentAccount ? (
             <Nav.Link onClick={logout} href="/">
               Logout
             </Nav.Link>
