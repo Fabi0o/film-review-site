@@ -8,10 +8,13 @@ const ReviewPrev = (props) => {
           By {props.review.author}
         </Card.Subtitle>
         <Card.Subtitle className="mb-2 text-muted">
-          '{props.review.title}'
+          Title: '{props.review.title}'
         </Card.Subtitle>
         <Card.Subtitle className="mb-2 text-muted">
           Category: {props.review.category}
+        </Card.Subtitle>
+        <Card.Subtitle className="mb-2 text-muted">
+          Rating: {props.review.rating}/5
         </Card.Subtitle>
         <Card.Text className="text-justify">{props.review.body}</Card.Text>
         <Card.Link href="#">Read more!</Card.Link>
